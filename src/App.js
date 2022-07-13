@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react' ;
+import GoalList from "./components/Goal-list/Goal-list";
+import NewGoal from "./components/NewGoal/NewGoal";
 
-function App() {
+const App = () => {
+  const[course_goals, setCourseGoals] = useState([  //ret latest state snapshot and a function to allow updation of state snapshot
+    {id: "cg1", text: "Finish the course"},
+    {id: "cg2", text: "Learn some JS"},
+    {id: "cg3", text: "Learn some React"}
+  ]);
+
+  const onAddGoalHandler = (newGoal) =>{
+    //setCourseGoals(course_goals.concat(newGoal));
+    setCourseGoals((prevCourses)=>{return prevCourses.concat(newGoal)}); 
+  };
+   
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>To-do List</h2>
+      <NewGoal onAddGoal = {onAddGoalHandler}/>
+      <GoalList goals = {course_goals}/>
+      
     </div>
   );
-}
+};
 
 export default App;
