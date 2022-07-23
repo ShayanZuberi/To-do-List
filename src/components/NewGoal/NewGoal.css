@@ -1,4 +1,11 @@
 .new-goal{
     margin : 2rem;
     text-align: center;
+    align-items: center;
+}
+
+#newGoalText{
+    height:30px;
+    margin: 2px;
+
 }

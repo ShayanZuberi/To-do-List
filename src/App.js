@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useState} from 'react' ;
-import GoalList from "./components/Goal-list/Goal-list";
-import NewGoal from "./components/NewGoal/NewGoal";
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
+import MainGoals from './pages/GoalsPage/MainGoals';
 
 const App = () => {
   const[course_goals, setCourseGoals] = useState([  //ret latest state snapshot and a function to allow updation of state snapshot
@@ -17,12 +18,15 @@ const App = () => {
    
 
   return (
-    <div>
-      <h2>To-do List</h2>
-      <NewGoal onAddGoal = {onAddGoalHandler}/>
-      <GoalList goals = {course_goals}/>
-      
-    </div>
+    <Router>
+      <MainNavigation />
+      <main>
+        <Routes>
+        <Route path="/" element={<MainGoals goals={course_goals} onAddGoal={onAddGoalHandler}/>} />
+        <Route path="*" element={<Navigate to ="/" />}/>
+        </Routes>
+      </main>
+    </Router>
   );
 };
 

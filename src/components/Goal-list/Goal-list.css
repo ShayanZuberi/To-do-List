@@ -10,3 +10,13 @@
     padding: 1rem;
     border-left: 1px solid rgb(78, 184, 233);
   }
+
+  @media (min-width: 768px) {
+    .goal-list {
+      width: auto;
+    }
+  
+    .goal-list li {
+      width: auto;
+    }
+  }
